@@ -45,3 +45,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Prevent scrolling */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Disable scrolling */
+}
+
+#__next {
+  height: 100%; /* Ensure the Next.js app takes full height */
+}

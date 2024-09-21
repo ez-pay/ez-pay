@@ -30,7 +30,7 @@ export default function AddPointButton() {
   };
 
   return (
-    <button onClick={addPoint} disabled={loading}>
+    <button disabled={loading}>
       {loading ? "Adding Point..." : "Add 1 Point"}
     </button>
   );
