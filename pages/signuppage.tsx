@@ -3,6 +3,62 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 
+async function xtest() {
+  const response = fetch("http://localhost:3000/api/test", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: "example@example.com",
+      password: "123456",
+      name: "John Doe",
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error("Error:", error));
+}
+
+async function loginUser(email: string, password: string) {
+  const response = await fetch("http://localhost:3000/api/login-account", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  });
+
+  const data = await response.json();
+
+  if (response.ok) {
+    console.log("Login successful:", data);
+    // Handle successful login (e.g., redirect or store user info)
+  } else {
+    console.error("Error logging in:", data.message);
+    // Handle error (e.g., show an error message)
+  }
+}
+
+async function registerUser(email: string, password: string, name: string) {
+  const response = await fetch("http://localhost:3000/api/create-account", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password, name }),
+  });
+  console.log("response is ", response);
+  const data = await response.json();
+  console.log("data is ", data);
+
+  if (response.ok) {
+    console.log("User created successfully:", data.user);
+  } else {
+    console.error("Error creating user:", data);
+  }
+}
+
 export default function SignUpPage() {
   return (
     <div
@@ -78,7 +134,7 @@ export default function SignUpPage() {
           id="component-outlined"
           defaultValue=""
           label="password"
-          type="password" 
+          type="password"
           sx={{
             width: "80vw",
             height: "9vh",
@@ -88,8 +144,7 @@ export default function SignUpPage() {
           }}
         />
       </FormControl>
-      
-      
+
       <div style={{ height: "1vh" }}></div>
       <div
         style={{
@@ -101,7 +156,6 @@ export default function SignUpPage() {
         }}
       >
         <div style={{ width: "10vw" }}></div>
-       
       </div>
       <div
         style={{
@@ -111,20 +165,38 @@ export default function SignUpPage() {
           justifyContent: "end",
         }}
       >
-        <button
-          style={{
-            border: "2px solid black",
-            background: "white",
-            color: "black",
-            borderRadius: "2vh",
-            height: "7vh",
-            width: "26vw",
+        <form
+          action={async () => {
+            "use server";
+            // xtest();
+            registerUser("mar12345678@gmail.com", "william0910", "william");
           }}
         >
-          Sign Up
-        </button>
+          <button
+            style={{
+              border: "2px solid black",
+              background: "white",
+              color: "black",
+              borderRadius: "2vh",
+              height: "7vh",
+              width: "26vw",
+            }}
+          >
+            Sign Up
+          </button>
+        </form>
+
         <div style={{ width: "10vw" }}></div>
       </div>
     </div>
   );
 }
+
+// //{async () => {
+//   "use server";
+//   registerUser(
+//     "williamjacobwijaya021@gmail.com",
+//     "williamjacob021",
+//     "William Jacob"
+//   );
+// }}

@@ -4,6 +4,28 @@ import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 
 export default function LoginPage() {
+
+  async function loginUser(email: string, password: string) {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+  
+    const data = await response.json();
+  
+    if (response.ok) {
+      console.log('Login successful:', data);
+      // Handle successful login (e.g., redirect or store user info)
+    } else {
+      console.error('Error logging in:', data.message);
+      // Handle error (e.g., show an error message)
+    }
+  }
+  
+
   return (
     <div
       style={{

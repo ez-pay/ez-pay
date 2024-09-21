@@ -9,6 +9,24 @@ import LoginPage from "@/pages/loginpage";
 import SignUpPage from "@/pages/signuppage";
 
 import Google from "next-auth/providers/google";
+
+async function registerUser() {
+  const response = await fetch("http://localhost:3000/api/create-account", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  console.log("response is ", response);
+  const data = await response.json();
+  console.log("data is ", data);
+  if (response.ok) {
+    console.log("User created successfully:", data.user);
+  } else {
+    console.error("Error creating user:", data);
+  }
+}
+
 const config = {
   theme: { logo: "https://authjs.dev/img/logo-sm.png" },
   adapter: SupabaseAdapter({
@@ -90,6 +108,13 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
           <main className="mx-auto w-full max-w-3xl flex-auto px-4 py-4 sm:px-6 md:py-6">
             {children}
           </main> */}
+          <form
+            action={async () => {
+              "use server";
+              // xtest();
+              registerUser();
+            }}
+          ></form>
           {/* <AuthPage /> */}
           <SignUpPage />
         </div>

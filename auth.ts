@@ -27,9 +27,8 @@ import client from "./lib/db";
 const config = {
   theme: { logo: "https://authjs.dev/img/logo-sm.png" },
   adapter: SupabaseAdapter({
-    url: "https://dxmxfoeeogrqmppxgryc.supabase.co",
-    secret:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR4bXhmb2Vlb2dycW1wcHhncnljIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyNjcyMzQ3OSwiZXhwIjoyMDQyMjk5NDc5fQ.L6ioX3jWMueXDvg33r_IC_zeTXROaks1Ed2Yv7YPgsI",
+    url: process.env.SUPABASE_URL!,
+    secret: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR4bXhmb2Vlb2dycW1wcHhncnljIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyNjcyMzQ3OSwiZXhwIjoyMDQyMjk5NDc5fQ.L6ioX3jWMueXDvg33r_IC_zeTXROaks1Ed2Yv7YPgsI"
   }),
   providers: [
     // GitLab,
