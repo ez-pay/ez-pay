@@ -4,12 +4,19 @@ import { Inter, Single_Day } from "next/font/google";
 import Header from "@/components/header";
 import AuthPage from "./authpage/authpage";
 import LoginPage from "./loginpage/loginpage";
-import HomePage from "@/pages/homepage";
+import HomePage from "@/components/homepage";
 
 import type { NextAuthConfig } from "next-auth";
 import { SupabaseAdapter } from "@auth/supabase-adapter";
 
 import Google from "next-auth/providers/google";
+import ProfilePage from "@/pages/profilepage";
+import RequestPaymentPage from "@/pages/requestpaymentpage";
+import SendTransactionPage from "@/pages/sendtransactionpage";
+import MakePaymentPage from "@/pages/makepaymentpage";
+import ConfirmPaymentPage from "@/pages/confirmpaymentpage";
+import ConfirmTransactionPage from "@/pages/confirmtransactionpage";
+
 const config = {
   theme: { logo: "https://authjs.dev/img/logo-sm.png" },
   adapter: SupabaseAdapter({
@@ -86,7 +93,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex h-full min-h-screen w-full flex-col justify-between">
+      <div className="flex flex-col h-screen w-screen justify-center items-center bg-gray-100">
           {/* <Header />
           <main className="mx-auto w-full max-w-3xl flex-auto px-4 py-4 sm:px-6 md:py-6">
             {children}
@@ -94,6 +101,16 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
           {/* <AuthPage /> */}
           {/* <LoginPage /> */}
           <HomePage />
+          {/* <ProfilePage /> */}
+          {/* <RequestPayment /> */}
+          {/* <SendTransactionPage /> */}
+          {/* <MakePayment /> */}
+          {/* <ConfirmPaymentPage 
+            walletType={"MetaMask"} 
+            paymentId={"987986097869879870"} 
+            amount={"100"} 
+          /> */}
+          {/* <ConfirmTransactionPage /> */}
         </div>
       </body>
     </html>
