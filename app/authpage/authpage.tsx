@@ -7,6 +7,7 @@ import { useEffect } from "react";
 
 export default async function AuthPage() {
   const session = await auth();
+  console.log("session is ", session)
   if (session) {
     redirect("/home");
   }

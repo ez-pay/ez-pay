@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 import { Inter, Single_Day } from "next/font/google";
 import Header from "@/components/header";
 import AuthPage from "./authpage/authpage";
-import LoginPage from "./loginpage/loginpage";
-
 import type { NextAuthConfig } from "next-auth";
 import { SupabaseAdapter } from "@auth/supabase-adapter";
+import LoginPage from "@/pages/loginpage";
+import SignUpPage from "@/pages/signuppage";
 
 import Google from "next-auth/providers/google";
 const config = {
@@ -90,8 +90,8 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
           <main className="mx-auto w-full max-w-3xl flex-auto px-4 py-4 sm:px-6 md:py-6">
             {children}
           </main> */}
-          <AuthPage />
-          {/* <LoginPage /> */}
+          {/* <AuthPage /> */}
+          <SignUpPage />
         </div>
       </body>
     </html>
