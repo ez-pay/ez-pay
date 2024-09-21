@@ -4,6 +4,7 @@ import { Inter, Single_Day } from "next/font/google";
 import Header from "@/components/header";
 import AuthPage from "./authpage/authpage";
 import LoginPage from "./loginpage/loginpage";
+import HomePage from "@/pages/homepage";
 
 import type { NextAuthConfig } from "next-auth";
 import { SupabaseAdapter } from "@auth/supabase-adapter";
@@ -92,6 +93,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
           </main> */}
           {/* <AuthPage /> */}
           {/* <LoginPage /> */}
+          <HomePage />
         </div>
       </body>
     </html>
